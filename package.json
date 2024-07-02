@@ -24,7 +24,7 @@
   },
   "cds": {
     "requires": {
-      "auth": "moc",
+      "auth": "xsuaa",
       "db": "hana",
       "Northwind": {
         "kind": "odata",
