@@ -1,0 +1,30 @@
+{
+  "xsappname": "cpapp",
+  "tenant-mode": "dedicated",
+  "scopes": [
+    {
+      "name": "$XSAPPNAME.Reader",
+      "description": "Reader"
+    }
+  ],
+  "attributes": [],
+  "role-templates": [
+    {
+      "name": "Reader",
+      "description": "generated",
+      "scope-references": [
+        "$XSAPPNAME.Reader"
+      ],
+      "attribute-references": []
+    }
+  ],
+  "oauth2-configuration": {
+    "credential-types": [
+      "binding-secret",
+      "x509"
+    ],
+    "redirect-uris": [
+      "https://*.applicationstudio.cloud.sap/**"
+    ]
+  }
+}

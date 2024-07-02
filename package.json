@@ -1,0 +1,47 @@
+{
+  "name": "cpapp",
+  "version": "1.0.0",
+  "description": "A simple CAP project.",
+  "repository": "<Add your repository here>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "@sap-cloud-sdk/http-client": "^3.16.0",
+    "@sap-cloud-sdk/resilience": "^3.16.0",
+    "@sap/cds": "^7",
+    "@sap/cds-hana": "^2",
+    "@sap/xssec": "^3",
+    "express": "^4"
+  },
+  "devDependencies": {
+    "@cap-js/sqlite": "^1",
+    "@sap/cds-dk": "^7",
+    "@sap/eslint-plugin-cds": "^3",
+    "eslint": "^9"
+  },
+  "scripts": {
+    "start": "cds-serve"
+  },
+  "cds": {
+    "requires": {
+      "auth": "moc",
+      "db": "hana",
+      "Northwind": {
+        "kind": "odata",
+        "model": "srv/external/Northwind",
+        "credentials": {
+          "destination": "Northwind",
+          "path": "/northwind/northwind.svc"
+        }
+      },
+      "zmy_quotes": {
+        "kind": "odata-v2",
+        "model": "srv/external/zmy_quotes",
+        "credentials": {
+          "destination": "FD9",
+          "path": "/sap/opu/odata/sap/ZGWP_CRM_SEARCH_QUOTATION_SRV"
+        }
+      }
+    }
+  }
+}
