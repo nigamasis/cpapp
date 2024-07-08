@@ -10,11 +10,12 @@ module.exports = cds.service.impl(async function () {
   });
 
   this.on("submitUser", async (reqData) => {
-    const val = await service.send(
-      "GET",
-      "/Products?$filter=ProductID eq " + reqData.data.prodID
-    );
-    return val;
+    // const val = await service.send(
+    //   "GET",
+    //   "/Products?$filter=ProductID eq " + reqData.data.prodID
+    // );
+    await this.emit ('addUser', { uid: 3, fname:'Test User', gender: 'Male', prodID: 3 });
+    return "Success";
   });
 
   const srv = await cds.connect.to("zmy_quotes");

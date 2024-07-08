@@ -25,19 +25,10 @@ service incidentService {
             modifiedBy
         };
 
-    // entity Comments @(restrict: [{
-    //     grant: 'READ',
-    //     to   : 'Reader'
-    // }])                  as
-    //     projection on inc.Comments
-    //     excluding {
-    //         createdAt,
-    //         createdBy,
-    //         modifiedAt,
-    //         modifiedBy
-    //     };
-
-    entity Comments      as
+    entity Comments @(restrict: [{
+        grant: 'READ',
+        to   : 'Reader'
+    }])                  as
         projection on inc.Comments
         excluding {
             createdAt,
@@ -46,10 +37,19 @@ service incidentService {
             modifiedBy
         };
 
+    // entity Comments      as
+    //     projection on inc.Comments
+    //     excluding {
+    //         createdAt,
+    //         createdBy,
+    //         modifiedAt,
+    //         modifiedBy
+    //     };
+
     entity Products      as
         projection on external.Products {
             *,
-            prod: Association to many User on prod.userID = ProductID
+            prod : Association to many User on prod.userID = ProductID
         };
 
     entity ETS_MY_QUOTES as
@@ -59,6 +59,13 @@ service incidentService {
 
     // entity Customers as projection on external.Customers;
 
-    function submitUser(prodID : Integer) returns String;
-    action   checkUser(userID : Integer)  returns String;
+    function submitUser()                returns String;
+    action   checkUser(userID : Integer) returns String;
+
+    event addUser {
+        uid    : type of inc.User : userID @mandatory;
+        fname  : type of inc.User : name   @mandatory;
+        gender : type of inc.User : gender @mandatory;
+        prodID : type of inc.User : prodID;
+    }
 }
