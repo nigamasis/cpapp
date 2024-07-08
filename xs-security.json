@@ -4,7 +4,8 @@
   "scopes": [
     {
       "name": "$XSAPPNAME.Reader",
-      "description": "Reader"
+      "description": "Reader",
+      "granted-apps" : ["$XSAPPNAME(application, anotherappxsuaa)"]
     }
   ],
   "attributes": [],
