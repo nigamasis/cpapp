@@ -10,6 +10,7 @@
     "@sap-cloud-sdk/resilience": "^3.16.0",
     "@sap/cds": "^7",
     "@sap/cds-hana": "^2",
+    "@sap/xb-msg-amqp-v100": "^0.9.58",
     "@sap/xssec": "^3",
     "express": "^4"
   },
@@ -41,6 +42,9 @@
           "destination": "FD9",
           "path": "/sap/opu/odata/sap/ZGWP_CRM_SEARCH_QUOTATION_SRV"
         }
+      },
+      "messaging": {
+        "kind": "file-based-messaging"
       }
     }
   }
